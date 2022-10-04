@@ -12,8 +12,8 @@ interface CharacterDao {
     fun getAllCharacters(): List<Character>
 
     @Delete
-    fun deleteCharacters(vararg character: Character)
+    fun deleteCharacter(vararg character: Character)
 
     @Update
-    fun updateCharacters(vararg character: Character)
+    fun updateCharacter(vararg character: Character)
 }

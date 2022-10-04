@@ -10,21 +10,23 @@ import com.example.android.harrypotterapp.database.CharacterDB
 import com.example.android.harrypotterapp.models.Character
 import com.squareup.picasso.OkHttp3Downloader
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.prototype_character.view.*
+import kotlinx.android.synthetic.main.prototype_saved_character.view.*
 
-class CharacterAdapter(private val characters: List<Character>, private val context: Context):
-    RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
+
+class SavedCharacterAdapter(private val characters: List<Character>, private val context: Context):
+    RecyclerView.Adapter<SavedCharacterAdapter.ViewHolder>() {
+
     class ViewHolder(val view: View): RecyclerView.ViewHolder(view) {
         val tvName = view.tvName
         val tvHouse = view.tvHouse
         val ivCharacter = view.ivCharacter
-        val fabFavourite = view.fabFavourite
+        val fabRemove = view.fabRemove
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view= LayoutInflater.from(context)
-            .inflate(R.layout.prototype_character, parent, false)
-        return ViewHolder(view)
+            .inflate(R.layout.prototype_saved_character, parent, false)
+        return SavedCharacterAdapter.ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -34,13 +36,15 @@ class CharacterAdapter(private val characters: List<Character>, private val cont
         val picBuilder = Picasso.Builder(context)
         picBuilder.downloader(OkHttp3Downloader(context))
         picBuilder.build().load(character.characterImg).into(holder.ivCharacter)
-        holder.fabFavourite.setOnClickListener{
-            saveCharacter(character)
+        holder.fabRemove.setOnClickListener{
+            deleteCharacter(character)
         }
+
     }
 
-    private fun saveCharacter(character: Character) {
-        CharacterDB.getInstance(this.context).getCharacterDao().insertCharacter(character)
+    private fun deleteCharacter(character: Character) {
+        CharacterDB.getInstance(this.context).getCharacterDao().deleteCharacter(character)
+
     }
 
     override fun getItemCount(): Int {

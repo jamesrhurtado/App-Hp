@@ -60,17 +60,20 @@
             tools:text="Hogwarts House" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabFavourite"
+            android:id="@+id/fabRemove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="41dp"
             android:layout_marginTop="35dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="31dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="35dp"
             android:clickable="true"
             app:fabSize="mini"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvHouse"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
