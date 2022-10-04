@@ -1,6 +1,7 @@
 package com.example.android.harrypotterapp.database
 
 import androidx.room.*
+import com.example.android.harrypotterapp.models.Character
 
 @Dao
 interface CharacterDao {
