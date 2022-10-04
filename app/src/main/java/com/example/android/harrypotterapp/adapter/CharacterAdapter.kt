@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.harrypotterapp.R
+import com.example.android.harrypotterapp.models.Character
 import kotlinx.android.synthetic.main.prototype_saved_character.view.*
 
 class CharacterAdapter(private val characters: List<Character>, private val context: Context):
@@ -24,7 +25,11 @@ class CharacterAdapter(private val characters: List<Character>, private val cont
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val character=characters[position]
+        holder.tvName.text=character.characterName
+        holder.tvHouse.text = character.hogwartsHouse
+
+
     }
 
     override fun getItemCount(): Int {

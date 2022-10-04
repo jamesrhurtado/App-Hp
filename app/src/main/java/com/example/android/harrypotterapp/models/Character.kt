@@ -10,10 +10,10 @@ class Character(
     @SerializedName("character_id")
     var characterId: Int,
 
-    @SerializedName("character_name")
+    @SerializedName("name")
     var characterName: String,
 
-    @SerializedName("character_img")
+    @SerializedName("image")
     val characterImg: String,
 
     @SerializedName("hogwarts_house")
