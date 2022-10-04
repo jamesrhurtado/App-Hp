@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HarryPotterApp</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_favourites">Favourites</string>
+</resources>
