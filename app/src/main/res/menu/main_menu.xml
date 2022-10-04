@@ -3,8 +3,10 @@
 
     <item
         android:id="@+id/menu_home"
+        android:icon="@android:drawable/ic_lock_idle_low_battery"
         android:title="@string/menu_home" />
     <item
         android:id="@+id/menu_favourites"
+        android:icon="@android:drawable/btn_star"
         android:title="@string/menu_favourites" />
 </menu>
