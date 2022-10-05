@@ -33,6 +33,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        try {
+            this.supportActionBar!!.hide()
+        } catch (e: NullPointerException) {
+        }
 
         val navView: BottomNavigationView = findViewById(R.id.bnvMenu)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)

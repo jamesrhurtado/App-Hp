@@ -14,6 +14,7 @@ import com.example.android.harrypotterapp.adapter.CharacterAdapter
 import com.example.android.harrypotterapp.models.ApiResponseDetails
 import com.example.android.harrypotterapp.models.Character
 import com.example.android.harrypotterapp.network.CharacterService
+import kotlinx.android.synthetic.main.fragment_characters.*
 import kotlinx.android.synthetic.main.fragment_favourites.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,7 +39,7 @@ class CharactersFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView=rvFavourites
+        recyclerView = rvCharacters
         loadCharacters(view.context)
     }
 
@@ -49,19 +50,20 @@ class CharactersFragment: Fragment() {
             .build()
         val characterService: CharacterService = retrofit.create(CharacterService::class.java)
         val request = characterService.getCharacters()
-        request.enqueue(object: Callback<ApiResponseDetails>{
-            override fun onFailure(call: Call<ApiResponseDetails>, t: Throwable) {
+        request.enqueue(object: Callback<List<Character>>{
+            override fun onFailure(call: Call<List<Character>>, t: Throwable) {
                 Log.d("Activity Fail", "Error: $t")
             }
 
             override fun onResponse(
-                call: Call<ApiResponseDetails>,
-                response: Response<ApiResponseDetails>
+                call: Call<List<Character>>,
+                response: Response<List<Character>>
             ) {
                 if(response.isSuccessful){
-                    val characters: List<Character> = response.body()!!.characters?:ArrayList()
+                    val characters: List<Character> = response.body()!!
                     recyclerView.layoutManager = LinearLayoutManager(context)
                     recyclerView.adapter = CharacterAdapter(characters, context)
+
                 }else {
                     Log.d("Activity Fail", "Error: "+ response.code())
                 }

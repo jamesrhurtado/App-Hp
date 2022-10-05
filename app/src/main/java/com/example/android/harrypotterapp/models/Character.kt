@@ -7,15 +7,15 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "characters")
 class Character(
     @PrimaryKey
-    @SerializedName("character_id")
+    @SerializedName("id")
     var characterId: Int,
 
-    @SerializedName("name")
+    @SerializedName("character")
     var characterName: String,
 
     @SerializedName("image")
     val characterImg: String,
 
-    @SerializedName("hogwarts_house")
+    @SerializedName("hogwartsHouse")
     var hogwartsHouse: String,
 )
